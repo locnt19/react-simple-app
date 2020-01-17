@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
 
-class CartProvider extends Component {
+export const CartContext = React.createContext();
+
+export class CartProvider extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      cartItems: []
+    }
+
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart(product) {
+    this.setState({
+      cartItems: this.state.cartItems.concat(product)
+    });
+    console.log('Add to cart successful!', this.state.cartItems);
+  }
+
   render() {
     return (
-      <div></div>
+      <CartContext.Provider value={{
+        cartItems: this.state.cartItems,
+        addToCart: this.addToCart
+      }}>
+        {
+          this.props.children
+        }
+      </CartContext.Provider>
     )
   }
 }
-
-export default CartProdiver;
