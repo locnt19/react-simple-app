@@ -5,16 +5,19 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import TopMenu from './components/TopMenu';
 import Products from './pages/Products';
+import { CartProvider } from './contexts/Cart';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <TopMenu />
-          <Route path="/products" component={Products} />
-        </div>
-      </Router>
+      <CartProvider>
+        <Router>
+          <div className="App">
+            <TopMenu />
+            <Route path="/products" component={Products} />
+          </div>
+        </Router>
+      </CartProvider>
     );
   }
 }
