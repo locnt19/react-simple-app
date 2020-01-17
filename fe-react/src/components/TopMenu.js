@@ -5,9 +5,11 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  NavbarText
+  NavbarText,
+  Badge
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../contexts/Cart';
 
 const TopMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +31,18 @@ const TopMenu = (props) => {
             </NavItem>
             <NavItem>
               <Link className="nav-link" to="/products/">Products</Link>
+            </NavItem>
+            <NavItem>
+              <CartContext.Consumer>
+                {
+                  ({ cartItems }) => (
+                    <Link className="nav-link" to="/carts/">
+                      <span>Cart</span>
+                      <Badge color="primary">{cartItems.length}</Badge>
+                    </Link>
+                  )
+                }
+              </CartContext.Consumer>
             </NavItem>
             <NavItem className="ml-md-auto">
               <NavbarText>username</NavbarText>
