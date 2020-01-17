@@ -5,6 +5,8 @@ import {
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
+import { CartContext } from '../contexts/Cart';
+
 class Products extends Component {
   constructor(props) {
     super(props);
@@ -16,11 +18,11 @@ class Products extends Component {
   componentDidMount() {
     // Run server in folder be-api first
     axios.get("http://localhost:8080/products").then(res => {
-      console.log(res);
+     console.log('Res log data api:', res);
       this.setState({
         products: res.data
       })
-     })
+    })
   }
 
   render() {
@@ -37,7 +39,13 @@ class Products extends Component {
                     <CardTitle>{product.name}</CardTitle>
                     <CardSubtitle>{product.producer}</CardSubtitle>
                     <CardText className="mt-2">{product.description}</CardText>
-                    <Button>Add to cart</Button>
+                    <CartContext.Consumer>
+                      {
+                        ({ addToCart }) => (
+                          <Button onClick={() => addToCart(product)}>Add to cart</Button>
+                        )
+                      }
+                    </CartContext.Consumer>
                   </CardBody>
                 </Card>
               </Col>
