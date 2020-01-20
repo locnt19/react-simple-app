@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
-import TopMenu from './components/TopMenu';
-import Products from './pages/Products';
 import { CartProvider } from './contexts/Cart';
+import TopMenu from './components/TopMenu';
+
+import Products from './pages/Products';
+import Cart from './pages/Cart';
 
 class App extends Component {
   render() {
@@ -15,6 +17,7 @@ class App extends Component {
           <div className="App">
             <TopMenu />
             <Route path="/products" component={Products} />
+            <Route path="/cart-items" component={Cart} />
           </div>
         </Router>
       </CartProvider>
