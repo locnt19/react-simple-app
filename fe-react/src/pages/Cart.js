@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 
 import { CartContext } from '../contexts/Cart';
+import { Link } from 'react-router-dom';
 
 class Cart extends Component {
   render() {
@@ -16,11 +17,19 @@ class Cart extends Component {
               ({ cartItems, removeFromCart }) => (
                 cartItems.map((product, index) => (
                   <Col xs="12" key={index} className="mt-4">
-                    <img src={product.imageURL} alt={product.name} />
-                    <h2>{product.name}</h2>
+                    <Link to={`/product/${product.id}`}>
+                      <img src={product.imageURL} alt={product.name} />
+                    </Link>
+                    <h2>
+                      <Link to={`/product/${product.id}`}>
+                        {product.name}
+                      </Link>
+                    </h2>
                     <h4>{product.producer}</h4>
                     <p>{product.description}</p>
-                    <button className="btn btn-danger" onClick={() => removeFromCart(index)}>Remove</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => removeFromCart(index)}>Remove</button>
                   </Col>
                 ))
               )

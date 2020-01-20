@@ -35,7 +35,7 @@ const TopMenu = (props) => {
             <CartContext.Consumer>
               {
                 ({ cartItems }) => (
-                  <Link className="nav-link" to="/cart-items">
+                  <Link className="nav-link" to="/cart">
                     <span>Cart</span>
                     <Badge color="primary">{cartItems.length}</Badge>
                   </Link>
