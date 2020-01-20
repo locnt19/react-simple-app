@@ -16,8 +16,10 @@ class App extends Component {
         <Router>
           <div className="App">
             <TopMenu />
-            <Route path="/products" component={Products} />
-            <Route path="/cart-items" component={Cart} />
+            <div className="App-content">
+              <Route path="/products" component={Products} />
+              <Route path="/cart-items" component={Cart} />
+            </div>
           </div>
         </Router>
       </CartProvider>
