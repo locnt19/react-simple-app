@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 import { CartProvider } from './contexts/Cart';
@@ -9,6 +9,7 @@ import TopMenu from './components/TopMenu';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
+import NotFound from './pages/404';
 
 class App extends Component {
   render() {
@@ -18,9 +19,13 @@ class App extends Component {
           <div className="App">
             <TopMenu />
             <div className="App-content">
-              <Route path="/products" component={Products} />
-              <Route path="/product/:id" component={ProductDetail} />
-              <Route path="/cart" component={Cart} />
+              <Switch>
+                <Route path="/" exact><h1>Home page</h1></Route>
+                <Route path="/products" exact component={Products}/>
+                <Route path="/product/:id" exact component={ProductDetail}/>
+                <Route path="/cart" exact component={Cart}/>
+                <Route path="*" component={NotFound} />
+              </Switch>
             </div>
           </div>
         </Router>

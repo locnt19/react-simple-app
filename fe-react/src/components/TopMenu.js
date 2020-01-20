@@ -8,7 +8,7 @@ import {
   NavbarText,
   Badge
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CartContext } from '../contexts/Cart';
 
 const TopMenu = (props) => {
@@ -18,27 +18,27 @@ const TopMenu = (props) => {
 
   return (
     <Navbar color="light" light expand="md">
-      <Link className="navbar-brand" to="/">Simple</Link>
+      <NavLink className="navbar-brand" to="/">Simple</NavLink>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="w-100" navbar>
           <NavItem>
-            <Link className="nav-link" to="/">Home</Link>
+            <NavLink to="/" exact activeClassName="active" className="nav-link">Home</NavLink>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/profiles/">Profiles</Link>
+            <NavLink to="/profiles/" activeClassName="active" className="nav-link">Profiles</NavLink>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/products/">Products</Link>
+            <NavLink to="/products/" activeClassName="active" className="nav-link">Products</NavLink>
           </NavItem>
           <NavItem>
             <CartContext.Consumer>
               {
                 ({ cartItems }) => (
-                  <Link className="nav-link" to="/cart">
+                  <NavLink to="/cart" activeClassName="active" className="nav-link">
                     <span>Cart</span>
                     <Badge color="primary">{cartItems.length}</Badge>
-                  </Link>
+                  </NavLink>
                 )
               }
             </CartContext.Consumer>
@@ -47,7 +47,7 @@ const TopMenu = (props) => {
             <NavbarText>username</NavbarText>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/login/">Login</Link>
+            <NavLink to="/login/" activeClassName="active" className="nav-link">Login</NavLink>
           </NavItem>
         </Nav>
       </Collapse>
