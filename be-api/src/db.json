@@ -1,4 +1,13 @@
 {
+  "accounts": [{
+    "id": "locnt19",
+    "password": "123"
+  },
+  {
+    "id": "as",
+    "password": "123"
+  }
+],
   "products": [{
     "id": "a81dd26f-b771-47cc-9cac-0e1e9ec26af1",
     "name": "530",
