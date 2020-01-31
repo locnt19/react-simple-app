@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 class Cart extends Component {
   render() {
     return (
-      <Container>
+      <Container className="mt-4">
         <Row>
           <CartContext.Consumer>
             {

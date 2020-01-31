@@ -19,7 +19,7 @@ class Products extends Component {
   componentDidMount() {
     // Run server in folder be-api first
     axios.get("http://localhost:8080/products").then(res => {
-     console.log('Res log data api:', res);
+    //  console.log('Res log data api:', res);
       this.setState({
         products: res.data
       })
@@ -29,7 +29,7 @@ class Products extends Component {
   render() {
     const { products } = this.state;
     return (
-      <Container>
+      <Container className="mt-4">
         <Row>
           {
             products.map((product, index) => (

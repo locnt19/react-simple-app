@@ -15,7 +15,7 @@ class ProductDetail extends Component {
   }
   componentDidMount() {
     // Run server in folder be-api first
-    console.log('Props:', this.props)
+    // console.log('Props:', this.props)
     axios.get("http://localhost:8080/products/" + this.props.match.params.id).then(res => {
       this.setState({
         product: res.data
@@ -27,7 +27,7 @@ class ProductDetail extends Component {
   render() {
     const { product } = this.state;
     return (
-      <Container>
+      <Container className="mt-4">
         <Row>
           <Col xs="12">
             <img src={product.imageURL} alt={product.name} />

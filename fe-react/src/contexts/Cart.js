@@ -36,7 +36,7 @@ export class CartProvider extends Component {
 
   render() {
     console.log('Rendering...')
-    console.log('state.cartItems:', this.state.cartItems);
+    // console.log('state.cartItems:', this.state.cartItems);
     return (
       <CartContext.Provider value={{
         cartItems: this.state.cartItems,
